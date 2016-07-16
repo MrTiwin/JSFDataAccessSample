@@ -5,7 +5,6 @@ import javax.faces.bean.SessionScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,9 +16,7 @@ import java.util.List;
 @SessionScoped
 public class HRServiceFacade {
     private Connection connection;
-
     private Connection getConnection(){ return connection;}
-    public void setConnection(Connection connection){ this.connection=connection; }
 
     public HRServiceFacade(){
         try{
@@ -36,7 +33,6 @@ public class HRServiceFacade {
         employeesEntity.setConnection(connection);
         return employeesEntity;
     }
-
     public int getEmployeesCount(){ return getEmployeesEntity().getEmployees().size();}
 
     public List<Employee> getEmployees() { return getEmployeesEntity().getEmployees();}

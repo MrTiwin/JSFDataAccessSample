@@ -16,7 +16,6 @@ public class EmployeesEntity {
     public Connection getConnection() {
         return connection;
     }
-
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
@@ -24,9 +23,7 @@ public class EmployeesEntity {
     public List<Employee> getEmployees() {
         String sql = "SELECT * FROM employees";
         List<Employee> employees = new ArrayList<>();
-        if (connection == null) {
-            return null;
-        }
+        if (connection == null) return null;
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -36,7 +33,8 @@ public class EmployeesEntity {
                 employee.setFirstName(rs.getString("first_name"));
                 employee.setLastName(rs.getString("last_name"));
                 employees.add(employee);
-            } return employees;
+            }
+            return employees;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
